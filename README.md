@@ -1,16 +1,11 @@
-# string-comapre-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+ char** temp;
 int lexicographic_sort(const char* a, const char* b) {
 
-    if(a>b){
-        return b;
-        
-    }else{
-    return b;}
+return strcmp(a,b);
+     
 }
 
 // int lexicographic_sort_reverse(const char* a, const char* b) {
@@ -26,59 +21,30 @@ int lexicographic_sort(const char* a, const char* b) {
 // }
 
 void string_sort(char** arr,const int len,int (*cmp_func)(const char* a, const char* b)){
-    char** fun=arr;
+   
+    char temp[len];
     if(cmp_func==lexicographic_sort)
-    {
-        for(int i=0;i<len-1;i++)
-        {
-            for(int j=i+1;j<len;j++)
-            {   printf("\n\n\n\n\nFor i=%d and j=%d \n\nfun[%d]=%s  and fun[%d]=%s\n ",i,j,i,fun[i],j,fun[j]);
-            
-                arr[i]= lexicographic_sort(fun[i],fun[j]);
+    { 
+    for(int i=0;i<len-1;i++) 
+    { 
+        for(int j=i+1;j<len;j++)
+        {   
+            printf("\n\n\n\n\nFor i=%d and j=%d \n\narr[%d]=%s and arr[%d]=%s\n ",i,j,i,arr[i],j,arr[j]);
+            int returned = lexicographic_sort(arr[i],arr[j]);
+            if(returned>0)
+            {
+                strcpy(temp,arr[i]);
+                strcpy(arr[i],arr[j]);
+                strcpy(arr[j],temp);
                 
-                printf(" now after using the function \na[%d]=%s \n",i,arr[i]);
             }
             
+            printf(" now after using the function \na[%d]=%s and arr[%d]=%s\n",i,arr[i],j,arr[j]);
         }
         
     }
-    // else if(cmp_func==lexicographic_sort_reverse)
-    // {
-    //     for(int i=0;i<len-1;i++)
-    //     {
-    //         for(int j=i+1;j<len;j++)
-    //         {   
-    //             arr[i]=lexicographic_sort_reverse(arr[i],arr[j]);
-    //         }
-            
-    //     }
-        
-    // }
-    // else if(cmp_func==sort_by_number_of_distinct_characters)
-    // {
-    //     for(int i=0;i<len-1;i++)
-    //     {
-    //         for(int j=i+1;j<len;j++)
-    //         {   
-    //             arr[i]=sort_by_number_of_distinct_characters(arr[i],arr[j]);
-    //         }
-            
-    //     }
-        
-    // }
-    // else if(cmp_func==sort_by_length)
-    // {
-    //     for(int i=0;i<len-1;i++)
-    //     {
-    //         for(int j=i+1;j<len;j++)
-    //         {   
-    //             arr[i]=sort_by_length(arr[i],arr[j]);
-    //         }
-            
-    //     }
-        
-    // }
-}
+   
+}}
 
 
 int main() 
@@ -114,5 +80,4 @@ int main()
     // for(int i = 0; i < n; i++)
     //     printf("%s\n", arr[i]); 
     // printf("\n");
-    return 0;
 }
