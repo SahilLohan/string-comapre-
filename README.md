@@ -19,7 +19,22 @@ return strcmp(a,b);
 // }
 
 int sort_by_length(const char* a, const char* b) {
-
+    if(strlen(a)>strlen(b))
+    {
+        return 1;
+    }
+    else if(strlen(a)==strlen(b))
+    {
+        
+        if(strcmp(a,b)>0)
+        {
+            return 1;
+        }
+        else 
+        {
+            return 0;
+        }
+    }
 }
 
 void string_sort(char** arr,const int len,int (*cmp_func)(const char* a, const char* b)){
@@ -51,7 +66,7 @@ void string_sort(char** arr,const int len,int (*cmp_func)(const char* a, const c
         { 
         for(int j=i+1;j<len;j++)
         {   
-            // printf("\n\n\n\n\nFor i=%d and j=%d \n\narr[%d]=%s and arr[%d]=%s\n ",i,j,i,arr[i],j,arr[j]);
+           // printf("\n\n\n\n\nFor i=%d and j=%d \n\narr[%d]=%s and arr[%d]=%s\n ",i,j,i,arr[i],j,arr[j]);
             int returned = lexicographic_sort(arr[i],arr[j]);
             if(returned<0)
             {
@@ -61,7 +76,7 @@ void string_sort(char** arr,const int len,int (*cmp_func)(const char* a, const c
                 
             }
             
-            // printf(" now after using the function \na[%d]=%s and arr[%d]=%s\n",i,arr[i],j,arr[j]);
+           // printf(" now after using the function \na[%d]=%s and arr[%d]=%s\n",i,arr[i],j,arr[j]);
         }
         
     }
@@ -74,7 +89,7 @@ void string_sort(char** arr,const int len,int (*cmp_func)(const char* a, const c
         {   
             // printf("\n\n\n\n\nFor i=%d and j=%d \n\narr[%d]=%s and arr[%d]=%s\n ",i,j,i,arr[i],j,arr[j]);
             int returned = sort_by_length(arr[i],arr[j]);
-            if(returned<0)
+            if(returned==1)
             {
                 strcpy(temp,arr[i]);
                 strcpy(arr[i],arr[j]);
