@@ -23,6 +23,13 @@ int sort_by_number_of_distinct_characters(const char* a, const char* b) {
             if(a[i]!=a[j]){
                 disa++;
             }
+           
+        }
+    }for(int i=0;i<lenb-1;i++)
+    {
+        for(int j=i+1;j<lenb;j++)
+        {
+            
             if(b[i]!=b[j]){
                 disb++;
             }
@@ -147,6 +154,7 @@ void string_sort(char** arr,const int len,int (*cmp_func)(const char* a, const c
     }
    
 }
+
 
 
 int main() 
